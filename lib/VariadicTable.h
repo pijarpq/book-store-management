@@ -112,8 +112,8 @@ public:
     // Print out the top line
     // stream << std::string(total_width, '-') << "\n";
 
-    // I changed '-' to '='
-    stream << std::string(total_width, '-') << "\n";
+    //! I changed '-' to '='
+    stream << std::string(total_width, '=') << "\n";
 
     // Print out the headers
     stream << "|";
@@ -143,7 +143,7 @@ public:
     // Print out the line below the header
     // stream << std::string(total_width, '-') << "\n";
 
-    // I changed '-' to '='
+    //! I changed '-' to '='
     stream << std::string(total_width, '=') << "\n";
   }
 
