@@ -11,7 +11,7 @@ void welcome()
     VariadicTable<string> vt({"Toko Buku Cakrawala"});
     vt.addRow("Membaca Adalah Kunci Kesuksesan");
     vt.print(cout);
-    cout << "\n\n   Press any key to continue....";
+    cout << "\n\n Tekan enter untuk melanjutkan....";
     getchar();
 }
 
@@ -48,7 +48,7 @@ input:
     }
     else
     {
-        errorNotif("masukkan angka sesuai dengan pilihan yang tersedia");
+        notification("Masukkan angka sesuai dengan pilihan yang tersedia");
         pressEnter("kembali memilih.");
         goto input;
     }

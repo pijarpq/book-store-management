@@ -11,24 +11,7 @@ void update()
     {
         while (true)
         {
-            clearScreen();
-            for (int i = 0; i < 90; i++)
-            {
-                cout << '-';
-                if (i == 44)
-                {
-                    cout << "\n!";
-                    for (int j = 0; j < 26; j++)
-                    {
-                        cout << " ";
-                        if (j == 12)
-                        {
-                            cout << "Database Kosong!!";
-                        }
-                    }
-                    cout << "!\n";
-                }
-            }
+            notification("Database kosong");
         insert:
             cout << "\n\nTambahkan data? (y/n): ";
             cin >> y_n;
@@ -45,7 +28,7 @@ void update()
             }
             else
             {
-                errorNotif("silahkan masukkan y/n, dilain itu salah.");
+                notification("Silahkan masukkan y/n");
                 pressEnter("kembali memilih y/n");
             }
         }

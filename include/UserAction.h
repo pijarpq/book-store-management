@@ -22,7 +22,7 @@ void createData()
         {
             if (!isStringAllDigit(penampung[i]))
             {
-                errorNotif("jumlah halaman, ISBN, dan harga harus berupa angka.");
+                notification("Jumlah halaman, ISBN, dan harga harus berupa angka");
                 pressEnter("kembali menginputkan data buku");
                 break;
             }

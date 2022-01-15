@@ -46,17 +46,26 @@ char makeLowerCase(const char &chr)
 }
 
 /* fungsi untuk menampilkan error */
-void errorNotif(string errorKind)
+void notification(string errorKind)
 {
-    string error = "ERROR: " + errorKind;
-    cout << endl;
-    for (int i = 0; i < 150; i++)
+    int mid = 55 - errorKind.size();
+
+    clearScreen();
+    for (int i = 0; i < 110; i++)
     {
-        cout << "!";
-        if (i == 74)
+        cout << '-';
+        if (i == 54)
         {
-            cout << "\n"
-                 << error << "\n";
+            cout << "\n!";
+            for (int j = 0; j < (mid - 2); j++)
+            {
+                cout << " ";
+                if (j == mid / 2 - 1)
+                {
+                    cout << errorKind;
+                }
+            }
+            cout << "!\n";
         }
     }
     cout << endl;
