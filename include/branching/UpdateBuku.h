@@ -15,12 +15,12 @@ void update()
         insert:
             cout << "\n\nTambahkan data? (y/n): ";
             cin >> y_n;
-            if (makeLowerCase(y_n) == 'y')
+            if (makeLowerCase(y_n)[0] == 'y')
             {
                 createData();
                 goto insert;
             }
-            else if (makeLowerCase(y_n) == 'n')
+            else if (makeLowerCase(y_n)[0] == 'n')
             {
                 pressEnter("kembali ke menu");
                 menu();

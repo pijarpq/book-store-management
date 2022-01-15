@@ -35,12 +35,13 @@ int strToInt(string str)
 }
 
 /* fungsi untuk mengubah string ke lowercase */
-char makeLowerCase(const char &chr)
+string makeLowerCase(const string &str)
 {
-    char result = chr;
-    if (result > 64 && result < 91)
+    string result = str;
+    for (int i = 0; i < str.size(); i++)
     {
-        result = result + 32;
+        if (result[i] > 64 && result[i] < 91)
+            result[i] = result[i] + 32;
     }
     return result;
 }

@@ -12,7 +12,7 @@
 
 using namespace std;
 
-char y_n = 'n';
+char y_n[] = "";
 
 #include "../lib/VariadicTable.h"
 #include "../lib/Helpers.h"

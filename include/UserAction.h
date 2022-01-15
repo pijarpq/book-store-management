@@ -6,7 +6,6 @@ void createData()
     bool repeat = true;
     int harga = 0;
 
-    db.open("database/DataBuku.csv", ios::app);
     while (repeat)
     {
         clearScreen();
@@ -23,7 +22,8 @@ void createData()
             if (!isStringAllDigit(penampung[i]))
             {
                 notification("Jumlah halaman, ISBN, dan harga harus berupa angka");
-                pressEnter("kembali menginputkan data buku");
+                cout << "\nTekan ENTER untuk kembali menginputkan data buku...";
+                cin.get();
                 break;
             }
             else
@@ -33,6 +33,7 @@ void createData()
         }
     }
 
+    db.open("database/DataBuku.csv", ios::app);
     for (int i = 0; i < 11; i++)
     {
         db << penampung[i];
