@@ -1,14 +1,11 @@
 void update()
 {
     ifstream db;
-    string line = "";
 
     db.open("database/DataBuku.csv");
     if (db.is_open())
     {
-        readData(); //!read ganti nama woeee
-
-        //cout << "file terbuka";
+        readData();
     }
     else
     {

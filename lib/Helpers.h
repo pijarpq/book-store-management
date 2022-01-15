@@ -71,7 +71,7 @@ void pressEnter(string information)
 }
 
 /* mendapatkan data buku */
-vector<vector<string>> fetchDatas()
+vector<vector<string>> fetchData()
 {
     string baris, kata;
     vector<vector<string>> data;

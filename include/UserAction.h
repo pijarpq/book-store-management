@@ -22,7 +22,7 @@ void createData()
         {
             if (!isStringAllDigit(penampung[i]))
             {
-                errorNotif("harga, jumlah halaman, dan ISBN harus berupa angka.");
+                errorNotif("jumlah halaman, ISBN, dan harga harus berupa angka.");
                 pressEnter("kembali menginputkan data buku");
                 break;
             }
@@ -33,35 +33,28 @@ void createData()
         }
     }
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 11; i++)
     {
-        db << penampung[i] << ",";
+        db << penampung[i];
+        if (i != 10)
+            db << ',';
+        else
+            db << '\n';
     }
-    harga = strToInt(penampung[10]);
-    db << harga << '\n';
     db.close();
 }
 
 void readData()
 {
-    vector<vector<string>> data_buku = fetchDatas();
+    vector<vector<string>> data_buku = fetchData();
+
+    clearScreen();
     cout << "Daftar Buku\n\n";
+
+    VariadicTable<int, string, string> vt({"No.", "Judul buku", "Harga"});
     for (int i = 0; i < data_buku.size(); i++)
     {
-        for (int j = 0; j < data_buku[i].size(); j++)
-        {
-            VariadicTable<int, string, string> vt({"No.", "Judul buku", "Harga"});
-            vt.addRow(i + 1, data_buku[i][0], data_buku[i][data_buku[i].size() - 1]);
-            vt.print(cout);
-        }
+        vt.addRow(i + 1, data_buku[i][0], data_buku[i][10]);
     }
-
-    // while (getline(db, row))
-    // {
-    //     row++;
-    // }
-    // for (int i = 0; i < row; i++)
-    // {
-    //     db
-    // }
+    vt.print(cout);
 }

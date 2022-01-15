@@ -20,7 +20,6 @@ void menu()
 {
     string tindakan[] = {"Mengupdate data buku", "Membeli buku", "Menghapus data buku"};
     string pil_tindakan = "";
-    int indexNumber = 1;
     int action_choice = 0;
 
 input:
@@ -32,6 +31,7 @@ input:
         vt.addRow(i + 1, tindakan[i]);
     }
     vt.print(cout);
+
     cout << "Masukkan pilihan: ";
     cin >> pil_tindakan;
     action_choice = strToInt(pil_tindakan);
