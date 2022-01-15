@@ -6,32 +6,11 @@ void update()
     if (db.is_open())
     {
         readData();
+        crud();
     }
     else
     {
-        while (true)
-        {
-            notification("Database kosong");
-        insert:
-            cout << "\n\nTambahkan data? (y/n): ";
-            cin >> y_n;
-            if (makeLowerCase(y_n)[0] == 'y')
-            {
-                createData();
-                goto insert;
-            }
-            else if (makeLowerCase(y_n)[0] == 'n')
-            {
-                pressEnter("kembali ke menu");
-                menu();
-                break;
-            }
-            else
-            {
-                notification("Silahkan masukkan y/n");
-                pressEnter("kembali memilih y/n");
-            }
-        }
+        ifDatabaseIsEmpty();
     }
     db.close();
 }

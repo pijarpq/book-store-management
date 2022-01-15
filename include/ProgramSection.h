@@ -1,5 +1,6 @@
 void menu();
 #include "UserAction.h"
+#include "deeper.h"
 #include "branching/BeliBuku.h"
 #include "branching/ResetDatabase.h"
 #include "branching/UpdateBuku.h"
@@ -49,7 +50,7 @@ input:
     else
     {
         notification("Masukkan angka sesuai dengan pilihan yang tersedia");
-        pressEnter("kembali memilih.");
+        pressEnter("kembali memilih");
         goto input;
     }
 }
