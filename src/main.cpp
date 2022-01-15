@@ -5,14 +5,26 @@
 #endif
 
 #include <iostream>
+#include <stdlib.h>
+#include <fstream>
+#include <vector>
+#include <sstream>
 
 using namespace std;
 
+char y_n = 'n';
+
 #include "../lib/VariadicTable.h"
-#include "../lib/helpers.h"
+#include "../lib/Helpers.h"
 #include "../include/ProgramSection.h"
 
 int main()
 {
+    /* membuat folder tempat menyimpan database dan hasil exort */
+    system("mkdir database & mkdir export");
+
+    /* main program */
     welcome();
+    menu();
+    return 0;
 }
