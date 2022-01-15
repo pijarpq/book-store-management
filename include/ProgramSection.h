@@ -19,38 +19,45 @@ void welcome()
 // Menu Aksi
 void menu()
 {
-    string tindakan[] = {"Mengupdate data buku", "Membeli buku", "Menghapus data buku"};
+    string tindakan[] = {"Mengupdate data buku", "Membeli buku", "Menghapus data buku", "Keluar aplikasi"};
     string pil_tindakan = "";
     int action_choice = 0;
+    bool repeat = true;
 
-input:
-    clearScreen();
-    cout << "\t     Menu\n\t   ********\n\n";
-    VariadicTable<int, string> vt({"No.", "Tindakan"});
-    for (int i = 0; i < 3; i++)
+    while (repeat)
     {
-        vt.addRow(i + 1, tindakan[i]);
-    }
-    vt.print(cout);
+        clearScreen();
+        cout << "\t     Menu\n\t   ********\n\n";
+        VariadicTable<int, string> vt({"No.", "Tindakan"});
+        for (int i = 0; i < 4; i++)
+        {
+            vt.addRow(i + 1, tindakan[i]);
+        }
+        vt.print(cout);
 
-    cout << "Masukkan pilihan: ";
-    cin >> pil_tindakan;
-    action_choice = strToInt(pil_tindakan);
-    if (isStringAllDigit(pil_tindakan) && (action_choice >= 1 && action_choice <= 3))
-    {
+        cout << "Masukkan pilihan: ";
+        cin >> pil_tindakan;
+        action_choice = strToInt(pil_tindakan);
+
         switch (action_choice)
         {
         case 1:
             update();
+            repeat = false;
+            break;
+        case 2:
+            repeat = false;
+            break;
+        case 3:
+            repeat = false;
+            break;
+        case 4:
+            repeat = false;
             break;
         default:
+            notification("Masukkan angka sesuai dengan pilihan yang tersedia");
+            pressEnter("kembali memilih");
             break;
         }
-    }
-    else
-    {
-        notification("Masukkan angka sesuai dengan pilihan yang tersedia");
-        pressEnter("kembali memilih");
-        goto input;
     }
 }

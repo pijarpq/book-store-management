@@ -23,7 +23,7 @@ void createData()
             {
                 notification("Jumlah halaman, ISBN, dan harga harus berupa angka");
                 cout << "\nTekan ENTER untuk kembali menginputkan data buku...";
-                cin.get();
+                getchar();
                 break;
             }
             else
