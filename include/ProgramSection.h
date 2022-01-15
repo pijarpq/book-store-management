@@ -49,6 +49,7 @@ void menu()
             repeat = false;
             break;
         case 3:
+            resetDatabase();
             repeat = false;
             break;
         case 4:

@@ -1,7 +1,7 @@
 #ifdef WIN32
-#define OS_Windows 1
+#define OS_WINDOWS 1
 #else
-#define OS_Windows 0
+#define OS_WINDOWS 0
 #endif
 
 #include <iostream>

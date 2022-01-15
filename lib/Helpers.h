@@ -1,13 +1,26 @@
 /* fungsi untuk membersihkan layar console */
 void clearScreen()
 {
-    if (OS_Windows)
+    if (OS_WINDOWS)
     {
         system("cls");
     }
     else
     {
         system("clear");
+    }
+}
+
+/* fungsi untuk menghapus database */
+void delFile()
+{
+    if (OS_WINDOWS)
+    {
+        system("del database\\DataBuku.csv");
+    }
+    else
+    {
+        system("rm database/DataBuku.csv");
     }
 }
 
