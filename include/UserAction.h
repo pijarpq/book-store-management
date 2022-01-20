@@ -78,19 +78,15 @@ void readData()
 // menghapus data indeks buku dalam database
 void deleteData()
 {
-    //! delete belum ditulis ke database
     vector<vector<string>> data_buku = fetchData();
     ofstream db;
     string pilihan = "";
     int choice = 0;
-    int it = 0;
-    int jumBuku = 0;
 
     cout << "Masukkan nomor indeks buku yang mau dihapus: ";
     cin >> pilihan;
     choice = strToInt(pilihan);
-    jumBuku = data_buku.size();
-    if ((choice > 0) && (choice <= jumBuku) && isStringAllDigit(pilihan))
+    if ((choice > 0) && (choice <= data_buku.size()) && isStringAllDigit(pilihan))
     {
         while (true)
         {
@@ -100,16 +96,11 @@ void deleteData()
             if (makeLowerCase(y_n)[0] == 'y')
             {
                 choice = choice - 1;
-                it = data_buku[choice].size();
-                for (int i = 0; i < it; i++)
-                {
-                    data_buku[choice].pop_back();
-                }
-                jumBuku = data_buku.size();
+                data_buku[1].erase(data_buku[1].begin(), data_buku[1].end());
                 db.open("database/DataBuku.csv");
-                for (int i = 0; i < jumBuku; i++)
+                for (int i = 0; i < data_buku.size(); i++)
                 {
-                    for (int j = 0; j < 11; j++)
+                    for (int j = 0; j < data_buku[i].size(); j++)
                     {
                         db << data_buku[i][j];
                         if (j != 10)
