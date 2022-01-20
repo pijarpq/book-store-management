@@ -1,26 +1,19 @@
-/* fungsi untuk membersihkan layar console */
-void clearScreen()
+/*  fungsi tempat command console berada */
+void commandConsole(string command)
 {
     if (OS_WINDOWS)
     {
-        system("cls");
+        if (command == "bersihkan layar")
+            system("cls");
+        else if (command == "hapus database")
+            system("del database\\DataBuku.csv");
     }
     else
     {
-        system("clear");
-    }
-}
-
-/* fungsi untuk menghapus database */
-void delFile()
-{
-    if (OS_WINDOWS)
-    {
-        system("del database\\DataBuku.csv");
-    }
-    else
-    {
-        system("rm database/DataBuku.csv");
+        if (command == "bersihkan layar")
+            system("clear");
+        else if (command == "hapus database")
+            system("rm database/DataBuku.csv");
     }
 }
 
@@ -59,12 +52,12 @@ string makeLowerCase(const string &str)
     return result;
 }
 
-/* fungsi untuk menampilkan error */
+/* fungsi untuk menampilkan notifikasi */
 void notification(string errorKind)
 {
     int mid = 55 - errorKind.size();
 
-    clearScreen();
+    commandConsole("bersihkan layar");
     for (int i = 0; i < 110; i++)
     {
         cout << '-';
@@ -110,5 +103,6 @@ vector<vector<string>> fetchData()
         }
         data.push_back(row);
     }
+    db.close();
     return data;
 }

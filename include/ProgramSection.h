@@ -1,14 +1,7 @@
-void menu();
-#include "UserAction.h"
-#include "Deeper.h"
-#include "branching/BeliBuku.h"
-#include "branching/ResetDatabase.h"
-#include "branching/UpdateBuku.h"
-
-// Welcome Screen
+/* Welcome Screen */
 void welcome()
 {
-    clearScreen();
+    commandConsole("bersihkan layar");
     VariadicTable<string> vt({"Toko Buku Cakrawala"});
     vt.addRow("Membaca Adalah Kunci Kesuksesan");
     vt.print(cout);
@@ -16,7 +9,7 @@ void welcome()
     getchar();
 }
 
-// Menu Aksi
+/* Menu Aksi */
 void menu()
 {
     string tindakan[] = {"Mengupdate data buku", "Membeli buku", "Menghapus data buku", "Keluar aplikasi"};
@@ -26,7 +19,7 @@ void menu()
 
     while (repeat)
     {
-        clearScreen();
+        commandConsole("bersihkan layar");
         cout << "\t     Menu\n\t   ********\n\n";
         VariadicTable<int, string> vt({"No.", "Tindakan"});
         for (int i = 0; i < 4; i++)

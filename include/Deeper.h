@@ -1,51 +1,55 @@
+/* menambah dan menghapus data */
 void crud()
 {
     int choice;
     string pilihan;
-    while (true)
+    bool repeat = true;
+
+    while (repeat)
     {
-        cout << "Pilihan:\n[1] Menambah data\n[2] Menghapus data\n\nSilahkan pilih: ";
+        cout << "Pilihan:\n[1] Menambah data\n[2] Menghapus data\n[3] Kembali\n\nSilahkan pilih: ";
         cin >> pilihan;
         choice = strToInt(pilihan);
-        if (!isStringAllDigit(pilihan) || (choice != 1 && choice != 2))
+        switch (choice)
         {
+        case 1:
+            createData();
+            update();
+            repeat = false;
+            break;
+        case 2:
+            deleteData();
+            repeat = false;
+            break;
+        case 3:
+            repeat = false;
+            menu();
+            break;
+        default:
             notification("Masukkan angka sesuai dengan pilihan yang tersedia");
             pressEnter("memasukkan pilihan kembali");
             readData();
-        }
-        else
-        {
-            if (choice == 1)
-            {
-                createData();
-            }
-            else
-            {
-                //! CAPEK, KURANG HAPUS BUKU :)
-            }
-
             break;
         }
     }
 }
 
+/* menentukan pilihan akan membuat database baru atau tidak */
 void ifDatabaseIsEmpty()
 {
     while (true)
     {
         notification("Database kosong");
-    insert:
         cout << "\n\nTambahkan data? (y/n): ";
         cin >> y_n;
         if (makeLowerCase(y_n)[0] == 'y')
         {
             createData();
-            goto insert;
+            break;
         }
         else if (makeLowerCase(y_n)[0] == 'n')
         {
             pressEnter("kembali ke menu");
-            menu();
             break;
         }
         else
@@ -54,4 +58,5 @@ void ifDatabaseIsEmpty()
             pressEnter("kembali memilih y/n");
         }
     }
+    menu();
 }
