@@ -6,14 +6,14 @@ void commandConsole(string command)
         if (command == "bersihkan layar")
             system("cls");
         else if (command == "hapus database")
-            system("del database\\DataBuku.csv");
+            system("rmdir /s /q database");
     }
     else
     {
         if (command == "bersihkan layar")
             system("clear");
         else if (command == "hapus database")
-            system("rm database/DataBuku.csv");
+            system("rm -r database/");
     }
 }
 

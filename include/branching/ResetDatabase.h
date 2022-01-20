@@ -5,6 +5,7 @@ void resetDatabase()
     /* jika terdapat database maka lanjutkan program */
     if (db.is_open())
     {
+        db.close();
         while (true)
         {
             notification("Database akan terhapus");
@@ -27,7 +28,6 @@ void resetDatabase()
                 pressEnter("kembali memilih y/n");
             }
         }
-        db.close();
     }
     /* jika tidak terdapat database maka kembali ke menu */
     else
