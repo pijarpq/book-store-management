@@ -70,7 +70,7 @@ void readData()
     VariadicTable<int, string, string> vt({"No.", "Judul buku", "Harga"});
     for (int i = 0; i < data_buku.size(); i++)
     {
-        vt.addRow(i + 1, data_buku[i][0], data_buku[i][10]);
+        vt.addRow(i + 1, data_buku[i][0], FormatPrice(data_buku[i][10]));
     }
     vt.print(cout);
 }

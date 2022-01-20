@@ -17,41 +17,6 @@ void commandConsole(string command)
     }
 }
 
-/* fungsi untuk memeriksa apakah dalam angka terdapat huruf 
-    - akan true jika inputan tidak ada string (all int)
-    - akan false jika inputan terdapat string (sekali dapat) */
-bool isStringAllDigit(const string &str)
-{
-    //inisialisasi instansi dari iterator string
-    string::const_iterator it = str.begin();
-    //jika iterator bukan digit, maka hentikan loop
-    while (it != str.end() && isdigit(*it))
-        ++it;
-    //mengembalikan kondisi apakah iterator sudah mencapai akhir
-    return !str.empty() && it == str.end();
-}
-
-/* fungsi untuk mengkonversi string ke integer */
-int strToInt(string str)
-{
-    int isInt;
-    stringstream ToInt(str);
-    ToInt >> isInt;
-    return isInt;
-}
-
-/* fungsi untuk mengubah string ke lowercase */
-string makeLowerCase(const string &str)
-{
-    string result = str;
-    for (int i = 0; i < str.size(); i++)
-    {
-        if (result[i] > 64 && result[i] < 91)
-            result[i] = result[i] + 32;
-    }
-    return result;
-}
-
 /* fungsi untuk menampilkan notifikasi */
 void notification(string errorKind)
 {
@@ -89,20 +54,78 @@ void pressEnter(string information)
 /* mendapatkan data buku */
 vector<vector<string>> fetchData()
 {
-    string baris, kata;
+    string line, word;
     vector<vector<string>> data;
     ifstream db;
     db.open("database/DataBuku.csv");
-    while (getline(db, baris))
+    while (getline(db, line))
     {
         vector<string> row;
-        stringstream stream(baris);
-        while (getline(stream, kata, ','))
+        stringstream stream(line);
+        while (getline(stream, word, ','))
         {
-            row.push_back(kata);
+            row.push_back(word);
         }
         data.push_back(row);
     }
     db.close();
     return data;
+}
+
+/* fungsi untuk memeriksa apakah dalam angka terdapat huruf 
+    - akan true jika inputan tidak ada string (all int)
+    - akan false jika inputan terdapat string (sekali dapat) */
+bool isStringAllDigit(const string &str)
+{
+    //inisialisasi awal dari iterator
+    string::const_iterator it = str.begin();
+    //jika iterator bukan digit, maka hentikan loop
+    while (it != str.end() && isdigit(*it))
+        ++it;
+    //mengembalikan kondisi apakah iterator sudah mencapai akhir
+    return !str.empty() && it == str.end();
+}
+
+/* fungsi untuk mengubah string ke lowercase */
+string makeLowerCase(const string &str)
+{
+    string result = str;
+    for (int i = 0; i < str.size(); i++)
+    {
+        if (result[i] > 64 && result[i] < 91)
+            result[i] = result[i] + 32;
+    }
+    return result;
+}
+
+/* fungsi untuk mengkonversi string ke integer */
+int strToInt(string str)
+{
+    int is_int;
+    stringstream to_int(str);
+    to_int >> is_int;
+    return is_int;
+}
+
+/* fungsi untuk mengkonversi integer ke string */
+string IntToString(int number)
+{
+    ostringstream temp;
+    temp << number;
+    return temp.str();
+}
+
+/* fungsi untuk me-format harga supaya mudah dibaca */
+string FormatPrice(string price)
+{
+    int count = 0;
+    for (int i = price.size(); i > 0; i -= 3)
+    {
+        //tiap 3 karakter dari belakang maka string akan di tambahkan titik
+        if (count > 0)
+            price.insert(i, ".");
+        count++;
+    }
+    // mengembalikan harga yang sudah diformat dengan currency IDR
+    return "Rp" + price;
 }

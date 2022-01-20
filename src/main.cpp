@@ -39,6 +39,7 @@ int main()
     /* main program */
     welcome();
     menu();
+
     commandConsole("bersihkan layar");
     return 0;
 }
