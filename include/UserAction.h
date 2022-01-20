@@ -96,7 +96,7 @@ void deleteData()
             if (makeLowerCase(y_n)[0] == 'y')
             {
                 choice = choice - 1;
-                data_buku[1].erase(data_buku[1].begin(), data_buku[1].end());
+                data_buku[choice].erase(data_buku[choice].begin(), data_buku[choice].end());
                 db.open("database/DataBuku.csv");
                 for (int i = 0; i < data_buku.size(); i++)
                 {

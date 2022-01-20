@@ -19,6 +19,7 @@ void crud()
             break;
         case 2:
             deleteData();
+            update();
             repeat = false;
             break;
         case 3:
