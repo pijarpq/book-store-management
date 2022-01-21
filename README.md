@@ -2,9 +2,9 @@
 Aplikasi manajemen data buku
 ## Cara Compile
 ```
-mkdir bin & g++ src/main.cpp -o bin/mgmt-book-data
+g++ src/main.cpp -o mgmt-data-book
 ```
 ## Cara Run
 ```
-./bin/mgmt-book-data
+./mgmt-data-book
 ```
