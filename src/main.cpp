@@ -33,9 +33,6 @@ void buyBook();
 
 int main()
 {
-    /* membuat folder tempat menyimpan database dan hasil exort */
-    system("mkdir database & mkdir export");
-
     /* main program */
     welcome();
     menu();

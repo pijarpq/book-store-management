@@ -6,14 +6,14 @@ void commandConsole(string command)
         if (command == "bersihkan layar")
             system("cls");
         else if (command == "hapus database")
-            system("rmdir /s /q database");
+            system("del database\\DataBuku.csv");
     }
     else
     {
         if (command == "bersihkan layar")
             system("clear");
         else if (command == "hapus database")
-            system("rm -r database/");
+            system("rm database/DataBuku.csv");
     }
 }
 
@@ -107,16 +107,8 @@ int strToInt(string str)
     return is_int;
 }
 
-/* fungsi untuk mengkonversi integer ke string */
-string IntToString(int number)
-{
-    ostringstream temp;
-    temp << number;
-    return temp.str();
-}
-
 /* fungsi untuk me-format harga supaya mudah dibaca */
-string FormatPrice(string price)
+string formatPrice(string price)
 {
     int count = 0;
     for (int i = price.size(); i > 0; i -= 3)

@@ -19,6 +19,7 @@ insert:
             cin.ignore();
         getline(cin, penampung[i]);
     }
+
     // memverifikasi apakah user menginputkan integer di detail jumlah halaman, ISBN, dan harga
     for (int i = 8; i < 11; i++)
     {
@@ -32,8 +33,15 @@ insert:
         }
     }
 
+open:
     // menulis data yang sudah terverifikasi ke dalam database
     db.open("database/DataBuku.csv", ios::app);
+    if (!db.is_open())
+    {
+        // membuat direktori database
+        system("mkdir database");
+        goto open;
+    }
     for (int i = 0; i < 11; i++)
     {
         db << penampung[i];
@@ -70,16 +78,18 @@ void readData()
     VariadicTable<int, string, string> vt({"No.", "Judul buku", "Harga"});
     for (int i = 0; i < data_buku.size(); i++)
     {
-        vt.addRow(i + 1, data_buku[i][0], FormatPrice(data_buku[i][10]));
+        vt.addRow(i + 1, data_buku[i][0], formatPrice(data_buku[i][10]));
     }
     vt.print(cout);
 }
 
-// menghapus data indeks buku dalam database
+/* menghapus data indeks buku dalam database */
 void deleteData()
 {
     vector<vector<string>> data_buku = fetchData();
-    ofstream db;
+    ofstream db_out;
+    ifstream db_in;
+    string check;
     string pilihan = "";
     int choice = 0;
 
@@ -96,20 +106,32 @@ void deleteData()
             if (makeLowerCase(y_n)[0] == 'y')
             {
                 choice = choice - 1;
+
+                // perintah untuk menghapus data buku yang dipilih
                 data_buku[choice].erase(data_buku[choice].begin(), data_buku[choice].end());
-                db.open("database/DataBuku.csv");
+
+                db_out.open("database/DataBuku.csv");
+                // memasukkan data baru ke dalam database
                 for (int i = 0; i < data_buku.size(); i++)
                 {
                     for (int j = 0; j < data_buku[i].size(); j++)
                     {
-                        db << data_buku[i][j];
+                        db_out << data_buku[i][j];
                         if (j != 10)
-                            db << ',';
+                            db_out << ',';
                         else
-                            db << '\n';
+                            db_out << '\n';
                     }
                 }
-                db.close();
+                db_out.close();
+
+                // jika database kosong maka hapus file database
+                db_in.open("database/DataBuku.csv");
+                db_in >> check;
+                db_in.close();
+                if (db_in.eof())
+                    commandConsole("hapus database");
+
                 break;
             }
             else if (makeLowerCase(y_n)[0] == 'n')

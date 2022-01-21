@@ -28,6 +28,7 @@ void resetDatabase()
                 pressEnter("kembali memilih y/n");
             }
         }
+        menu();
     }
     /* jika tidak terdapat database maka kembali ke menu */
     else

@@ -46,11 +46,13 @@ void ifDatabaseIsEmpty()
         if (makeLowerCase(y_n)[0] == 'y')
         {
             createData();
+            update();
             break;
         }
         else if (makeLowerCase(y_n)[0] == 'n')
         {
             pressEnter("kembali ke menu");
+            menu();
             break;
         }
         else
@@ -59,5 +61,4 @@ void ifDatabaseIsEmpty()
             pressEnter("kembali memilih y/n");
         }
     }
-    menu();
 }
