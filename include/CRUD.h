@@ -10,7 +10,8 @@ insert:
     commandConsole("bersihkan layar");
 
     // memasukkan detail buku ke dalam vector sebagai penyimpanan sementara
-    cout << "MASUKKAN DETAIL BUKU\n\n";
+    cout << "\t\t\tMASUKKAN DETAIL BUKU\n";
+    cout << "\t\t    ----------------------------\n\n";
     for (int i = 0; i < 11; i++)
     {
         cout << detail_buku[i];
@@ -105,7 +106,7 @@ void deleteData()
         while (true)
         {
             // konfirmasi penghapusan data
-            notification("Buku yang anda pilih akan terhapus");
+            warning("Buku yang anda pilih akan terhapus");
             cout << "\n\nApakah anda yakin? (y/n): ";
             cin >> to;
             if (makeLowerCase(to)[0] == 'y')

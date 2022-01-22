@@ -8,7 +8,7 @@ void resetDatabase()
         db.close();
         while (true)
         {
-            notification("Database akan terhapus");
+            warning("Database akan terhapus");
             cout << "\n\nApakah anda yakin? (y/n): ";
             cin >> to;
             if (makeLowerCase(to)[0] == 'y')

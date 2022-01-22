@@ -17,6 +17,39 @@ void commandConsole(string command)
     }
 }
 
+/* fungsi untuk menampilkan peringatan */
+void warning(string peringatan)
+{
+
+    int mid = 55 - peringatan.size();
+    commandConsole("bersihkan layar");
+    for (int i = 0; i < 110; i++)
+    {
+        cout << '!';
+        if (i == 54)
+        {
+            cout << endl;
+            for (int j = 0; j < (mid - 6) / 2; j++)
+            {
+                cout << '>';
+            }
+            for (int j = 0; j < 6; j++)
+            {
+                cout << ' ';
+                if (j == 2)
+                {
+                    cout << peringatan;
+                }
+            }
+            for (int j = 0; j < (mid - 6) / 2; j++)
+            {
+                cout << '<';
+            }
+            cout << endl;
+        }
+    }
+}
+
 /* fungsi untuk menampilkan notifikasi */
 void notification(string errorKind)
 {

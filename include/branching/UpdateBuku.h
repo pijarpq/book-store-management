@@ -59,7 +59,7 @@ void ifDatabaseIsEmpty()
 {
     while (true)
     {
-        notification("Database kosong");
+        warning("Database kosong");
         cout << "\n\nTambahkan data? (y/n): ";
         cin >> to;
         if (makeLowerCase(to)[0] == 'y')
