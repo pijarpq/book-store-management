@@ -91,17 +91,16 @@ void getPaid(string harga, int *diff, int *pay)
         // input harus bilangan positif
         if (*pay > 0 && isStringAllDigit(pay_str))
         {
+            *diff = abs(*pay - bill);
             // bila uang lebih maka tampilkan kembalian
             if (*pay > bill)
             {
-                *diff = *pay - bill;
                 cout << "Uang anda kembali\t: " << formatPrice(intToString(*diff)) << endl;
                 break;
             }
             // bila uang kurang maka tampilkan kekurangan
             else if (*pay < bill)
             {
-                *diff = bill - *pay;
                 cout << "Uang anda kurang\t: " << formatPrice(intToString(*diff)) << endl;
                 pressEnter("mengulangi");
             }
