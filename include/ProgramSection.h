@@ -1,4 +1,4 @@
-/* Welcome Screen */
+/* welcome screen */
 void welcome()
 {
     commandConsole("bersihkan layar");
@@ -9,12 +9,10 @@ void welcome()
     getchar();
 }
 
-/* Menu Aksi */
+/* menu aksi */
 void menu()
 {
     string tindakan[] = {"Mengupdate data buku", "Membeli buku", "Menghapus data buku", "Keluar aplikasi"};
-    string pil_tindakan = "";
-    int action_choice = 0;
     bool repeat = true;
 
     while (repeat)
@@ -29,16 +27,17 @@ void menu()
         vt.print(cout);
 
         cout << "Masukkan pilihan: ";
-        cin >> pil_tindakan;
-        action_choice = strToInt(pil_tindakan);
+        cin >> pilihan;
+        choice = strToInt(pilihan);
 
-        switch (action_choice)
+        switch (choice)
         {
         case 1:
             update();
             repeat = false;
             break;
         case 2:
+            buyBook();
             repeat = false;
             break;
         case 3:
@@ -46,6 +45,8 @@ void menu()
             repeat = false;
             break;
         case 4:
+            commandConsole("bersihkan layar");
+            exit(0);
             repeat = false;
             break;
         default:

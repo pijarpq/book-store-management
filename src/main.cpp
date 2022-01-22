@@ -14,19 +14,24 @@
 #include <sys/stat.h>
 using namespace std;
 
-/* declaration global variables */
-char y_n[] = ""; // variabel menampung pilihan y/n
+/* global declaration */
+char to[] = "";
+string pilihan = "";
+int choice = 0;
+string detail_buku[] = {"Judul buku      : ", "Penulis         : ", "Jumlah halaman  : ",
+                        "Bahasa          : ", "Penerbit        : ", "Tanggal terbit  : ",
+                        "ISBN            : ", "Panjang         : ", "Lebar           : ",
+                        "Berat           : ", "Harga           : "};
 
 void update();
 void resetDatabase();
 void buyBook();
 
-/* inport header file */
+/* import header file */
 #include "../lib/VariadicTable.h"
 #include "../lib/Helpers.h"
 #include "../include/ProgramSection.h"
 #include "../include/UserAction.h"
-#include "../include/Deeper.h"
 #include "../include/branching/BeliBuku.h"
 #include "../include/branching/ResetDatabase.h"
 #include "../include/branching/UpdateBuku.h"
@@ -37,6 +42,5 @@ int main()
     welcome();
     menu();
 
-    commandConsole("bersihkan layar");
     return 0;
 }
