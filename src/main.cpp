@@ -7,16 +7,16 @@
 
 /* import standard library */
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <sys/stat.h>
 using namespace std;
 
 /* declaration global variables */
 char y_n[] = ""; // variabel menampung pilihan y/n
 
-/* declaration function */
 void update();
 void resetDatabase();
 void buyBook();
