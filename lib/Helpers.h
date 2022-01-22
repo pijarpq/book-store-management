@@ -107,6 +107,14 @@ int strToInt(string str)
     return is_int;
 }
 
+/* fungsi untuk mengkonversi integer ke string */
+string intToString(int num)
+{
+    ostringstream stream;
+    stream << num;
+    return stream.str();
+}
+
 /* fungsi untuk me-format harga supaya mudah dibaca */
 string formatPrice(string price)
 {
