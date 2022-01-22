@@ -54,15 +54,13 @@ void buyBook();
 #include "../lib/Helpers.h"
 #include "../include/ProgramSection.h"
 #include "../include/CRUD.h"
-#include "../include/branching/BeliBuku.h"
-#include "../include/branching/ResetDatabase.h"
-#include "../include/branching/UpdateBuku.h"
+#include "../include/menus/BeliBuku.h"
+#include "../include/menus/ResetDatabase.h"
+#include "../include/menus/UpdateBuku.h"
 
 int main()
 {
     /* main program */
     welcome();
     menu();
-
-    return 0;
 }
