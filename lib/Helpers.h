@@ -53,13 +53,13 @@ void warning(string peringatan)
 /* fungsi untuk menampilkan notifikasi */
 void notification(string errorKind)
 {
-    int mid = 55 - errorKind.size();
+    int mid = 75 - errorKind.size();
 
     commandConsole("bersihkan layar");
-    for (int i = 0; i < 110; i++)
+    for (int i = 0; i < 150; i++)
     {
         cout << '-';
-        if (i == 54)
+        if (i == 74)
         {
             cout << "\n!";
             for (int j = 0; j < (mid - 2); j++)
@@ -117,6 +117,17 @@ bool isStringAllDigit(const string &str)
         ++it;
     //mengembalikan kondisi apakah iterator sudah mencapai akhir
     return !str.empty() && it == str.end();
+}
+
+/* fungsi untuk memeriksa apakah dalam string hanya terdapat unsur whitespace 
+    - akan true jika dalam string hanya terdapat unsur whitespace
+    - akan false jika dalam string tidak hanya terdapat unsur whitespace */
+bool isStringOnlyWhiteSpace(const string &str)
+{
+    auto it = str.begin();
+    while (it != str.end() && !(*it > 32 && *it < 127))
+        ++it;
+    return str.empty() || it == str.end();
 }
 
 /* fungsi untuk mengubah string ke lowercase */
