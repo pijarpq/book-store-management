@@ -33,7 +33,12 @@ insert:
     // membuat direktori database
     struct stat info;
     if (stat("database", &info) != 0)
-        system("mkdir database");
+    {
+        if (OS_WINDOWS)
+            system("mkdir database && attrib +h database");
+        else
+            system("mkdir .database");
+    }
 
     // menulis data yang sudah terverifikasi ke dalam database
     db.open("database/DataBuku.csv", ios::app);
