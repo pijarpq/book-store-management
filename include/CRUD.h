@@ -21,10 +21,10 @@ insert:
     }
 
     // memverifikasi apakah user menginputkan integer di detail harga
-    if (!isStringAllDigit(penampung[10]))
+    if (!isStringAllDigit(penampung[10]) || isStringOnlyWhiteSpace(penampung[0]))
     {
         dont_use_goto = false;
-        notification("Harga harus diisi dan berupa angka");
+        notification("Judul buku harus ada dan harga harus diisi berupa angka");
         cout << "\nTekan ENTER untuk kembali menginputkan data buku...";
         getchar();
         goto insert;

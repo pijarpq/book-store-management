@@ -33,6 +33,7 @@ void bookDetails(vector<vector<string>> data)
 {
     int bayar = 0;
     int kembalian = 0;
+    string taken = "";
 
     while (true)
     {
@@ -40,10 +41,12 @@ void bookDetails(vector<vector<string>> data)
         VariadicTable<string> detail({"DETAIL BUKU"});
         for (int i = 0; i < 11; i++)
         {
+            taken = data[choice][i];
+            isStringOnlyWhiteSpace(taken) == true ? taken = "N/A" : taken;
             if (i != 10)
-                detail.addRow(detail_buku[i] + data[choice][i]);
+                detail.addRow(detail_buku[i] + taken);
             else
-                detail.addRow(detail_buku[i] + formatPrice(data[choice][i]));
+                detail.addRow(detail_buku[i] + formatPrice(taken));
         }
         detail.print(cout);
 
