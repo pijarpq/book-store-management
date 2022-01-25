@@ -1,5 +1,5 @@
 /*  fungsi tempat command console berada */
-void commandConsole(string command)
+void commandConsole(const string &command)
 {
     if (OS_WINDOWS)
     {
@@ -18,10 +18,9 @@ void commandConsole(string command)
 }
 
 /* fungsi untuk menampilkan peringatan */
-void warning(string peringatan)
+void warning(const string &format)
 {
-
-    int mid = 55 - peringatan.size();
+    int mid = 55 - format.size();
     commandConsole("bersihkan layar");
     for (int i = 0; i < 110; i++)
     {
@@ -38,7 +37,7 @@ void warning(string peringatan)
                 cout << ' ';
                 if (j == 2)
                 {
-                    cout << peringatan;
+                    cout << format;
                 }
             }
             for (int j = 0; j < (mid - 6) / 2; j++)
@@ -51,9 +50,9 @@ void warning(string peringatan)
 }
 
 /* fungsi untuk menampilkan notifikasi */
-void notification(string errorKind)
+void notification(const string &format)
 {
-    int mid = 75 - errorKind.size();
+    int mid = 75 - format.size();
 
     commandConsole("bersihkan layar");
     for (int i = 0; i < 150; i++)
@@ -67,7 +66,7 @@ void notification(string errorKind)
                 cout << " ";
                 if (j == mid / 2 - 1)
                 {
-                    cout << errorKind;
+                    cout << format;
                 }
             }
             cout << "!\n";
@@ -77,9 +76,9 @@ void notification(string errorKind)
 }
 
 /* fungsi untuk memberi keterangan tekan enter */
-void pressEnter(string information)
+void pressEnter(const string &str)
 {
-    cout << "\nTekan ENTER untuk " + information + "...";
+    cout << "\nTekan ENTER untuk " + str + "...";
     cin.ignore();
     cin.get();
 }

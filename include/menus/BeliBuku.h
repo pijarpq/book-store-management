@@ -1,5 +1,5 @@
 void bookDetails(vector<vector<string>> data);
-void getPaid(string harga, int *diff, int *pay);
+void getPaid(string harga, int &diff, int &pay);
 void outReceipt(vector<vector<string>> small_data, int uang_masuk, int uang_keluar);
 
 /* pembelian buku */
@@ -54,7 +54,7 @@ void bookDetails(vector<vector<string>> data)
         cin >> to;
         if (makeLowerCase(to)[0] == 'y')
         {
-            getPaid(data[choice][10], &kembalian, &bayar);
+            getPaid(data[choice][10], kembalian, bayar);
             outReceipt(data, bayar, kembalian);
             break;
         }
@@ -77,7 +77,7 @@ void bookDetails(vector<vector<string>> data)
 }
 
 /* pembayaran */
-void getPaid(string harga, int *diff, int *pay)
+void getPaid(string harga, int &diff, int &pay)
 {
     string pay_str = "";
     int bill = 0;
@@ -88,23 +88,23 @@ void getPaid(string harga, int *diff, int *pay)
         cout << "Total harga\t\t: " << formatPrice(harga) << endl;
         cout << "Masukkan uang anda\t: ";
         cin >> pay_str;
-        *pay = strToInt(pay_str);
+        pay = strToInt(pay_str);
         bill = strToInt(harga);
 
         // input harus bilangan positif
-        if (*pay > 0 && isStringAllDigit(pay_str))
+        if (pay > 0 && isStringAllDigit(pay_str))
         {
-            *diff = abs(*pay - bill);
+            diff = abs(pay - bill);
             // bila uang lebih maka tampilkan kembalian
-            if (*pay > bill)
+            if (pay > bill)
             {
-                cout << "Uang anda kembali\t: " << formatPrice(intToString(*diff)) << endl;
+                cout << "Uang anda kembali\t: " << formatPrice(intToString(diff)) << endl;
                 break;
             }
             // bila uang kurang maka tampilkan kekurangan
-            else if (*pay < bill)
+            else if (pay < bill)
             {
-                cout << "Uang anda kurang\t: " << formatPrice(intToString(*diff)) << endl;
+                cout << "Uang anda kurang\t: " << formatPrice(intToString(diff)) << endl;
                 pressEnter("mengulangi");
             }
             else
@@ -151,7 +151,6 @@ void outReceipt(vector<vector<string>> small_data, int uang_masuk, int uang_kelu
     tulis.open("export/receipt" + intToString(receipt_number) + ".txt");
     VariadicTable<string> bukti({"*** Bukti Pembayaran ***"});
     bukti.addRow(detail_buku[0] + small_data[choice][0]);
-    bukti.addRow(detail_buku[6] + small_data[choice][9]);
     bukti.addRow(detail_buku[10] + formatPrice(small_data[choice][10]));
     bukti.addRow("Dibayarkan      : " + formatPrice(intToString(uang_masuk)));
     bukti.addRow("Kembalian       : " + formatPrice(intToString(uang_keluar)));
